@@ -1,0 +1,75 @@
+#username{
+  color: #00bdaa;
+}
+.form-text, .asteriskField{
+  display:none;
+}
+
+.overlay{
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.over{
+  background-color: rgba(0,0,0,0.5);
+  opacity: 0;
+}
+
+#design{
+  color:white;
+  border: 3px solid orange;
+  border-radius: 50%;
+  height:90px;
+  width:90px;
+  margin-right: 5%;
+}
+#usable{
+  color:white;
+  border: 3px solid blue;
+  border-radius: 50%;
+  height:90px;
+  width:90px;
+  margin-right: 5%;
+}
+
+#contente{
+  color:white;
+  border: 3px solid green;
+  border-radius: 50%;
+  height:90px;
+  width:90px;
+  margin-right: 5%;
+}
+#score{
+  color:white;
+  border: 3px solid red;
+  border-radius: 50%;
+  height:90px;
+  width:90px;
+  margin-right: 5%;
+}
+
+
+.rates{
+  font-size:14px;
+  font-weight:bolder;
+}
+.display{
+  display: flex;
+  flex-wrap: wrap;
+}
+.post-image{
+  position: relative;
+  height: 50vh;
+  overflow: hidden;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.post-image :hover .over{
+  opacity: 1;
+}
+.tings{
+  padding-top: 15%;
+}
