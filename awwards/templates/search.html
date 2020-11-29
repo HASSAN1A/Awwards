@@ -1,0 +1,46 @@
+{%extends 'base.html'%}
+{%block content%}
+<div class="container pt-3">
+  <div class="home">
+    {%if projects%}
+    <div class="card-title row">
+      <h2 class="prjs-heading">{%ifequal projects|length 1%}{{ projects|length }} Project available with name {{message}}{%else%}{{ projects|length }} Projects available with name {{message}}{%endifequal%}</h2>
+    </div>
+    <div class="row">
+      {%for project in projects%}
+      <div class="mx-auto mb-4 col-md-6 col-lg-4 col-sm-12">
+        <div class="card">
+          <a href="{% url 'view_project' project.id %}">
+          <div class="post-image" >
+            <img src="{{project.cover_photo.cdn_url}}" class="img-fluid" width="100%" style="min-height:160px" />
+          </a>
+          </div>
+          <div class="card-body pl-3 pr-3">
+            <h3 class="m-2 prj-title">
+              <a href="{% url 'view_project' project.id %}">{{project.title }}</a> <a style="float: right;" href="{{ project.url }}"><i class="fas fa-share-square"></i></a>
+            </h3>   
+            <p class="card-text m-2">
+            
+              {%if project.user.profile.profile_photo.cdn_url%}
+              <img src="{{project.user.profile.profile_photo.cdn_url}}" width="5%" height="5%" alt="avatar image" class="rounded-circle z-depth-0"/>
+              {%else%}
+              <img src="https://www.iconfinder.com/data/icons/user-pictures/100/unknown-512.png" class="rounded-circle z-depth-0"
+              alt="avatar image" width="5%" height="5%" >
+              {%endif%}  
+              <span style="font-size:12px">BY <strong>{{project.user.username|upper }}</strong></span>   
+              <span style="font-size: 0.8rem;float:right" class="pl-2 text-muted">{{project.upload_date|date}}</span>
+            </p>
+          </div>
+          
+        </div>
+      </div>   
+    {%endfor%}
+    </div>
+    {%else%}
+    <div class="card-title text-center row">
+      <h2 class="prjs-heading">{{ projects|length }} Projects available with name {{message}}</h2>
+    </div>
+    {%endif%}
+  </div> 
+</div>
+{%endblock%}
