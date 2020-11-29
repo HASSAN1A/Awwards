@@ -1,5 +1,5 @@
 
-#### Instagram-Clone
+#### Awwards
 
 #### Site
 #### Landing Page
@@ -12,7 +12,7 @@ The WebApp is compatible with devices of all sizes and all OS's, and consistent 
 
 
 
-#### Get Live link here : [USAGE](https://jumasinstagram.herokuapp.com/)
+#### Get Live link here : [USAGE]()
 
 ## Description.
 Django CRUD Web application that allows users to signup and login to the web application, they can also follow each other like each other's photos, comment, and update their profiles. It also saves users' posts via various posts and can always be viewed from time to time.
@@ -23,7 +23,7 @@ Django CRUD Web application that allows users to signup and login to the web app
 ## Running the process
 * . virtual/bin/activate
 * To open local server run python3 manage.py runserver
-* To run the test,run python manage.py test instagram
+* To run the test,run python manage.py test Awwards
 
 ## User Story
 * A user can view photos that interest me.
@@ -37,11 +37,11 @@ To get the code..
 
 1. Cloning the repository:
   ```bash
-  https://github.com/HASSAN1A/Instagram-Clone.git
+  https://github.com/HASSAN1A/Awwards.git
   ```
 2. Move to the folder and install requirements
   ```bash
-  cd Instagram-Clone
+  cd Awwards
   pip install -r requirements.txt
   ```
 3. Set up your database
