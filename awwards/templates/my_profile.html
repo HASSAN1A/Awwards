@@ -1,0 +1,124 @@
+{%extends 'base.html'%}
+{% load bootstrap3 %} 
+{% load static%}
+{%block title%}
+{{form.media }}
+{%endblock%}
+{%block styles%}
+{{block.super}}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{%endblock%}
+{%block content%}
+<div class="profile mt-5">
+
+    <!-- Background color -->
+  
+    <!-- Avatar -->
+    <div class="row mx-auto" style="width: 80%;">
+      <div class="col-6 avatarr mx-auto">
+        {%if profile.profile_photo%}
+        <img src="{{profile.profile_photo.cdn_url}}" onerror="this.onerror=null;this.src='https://www.iconfinder.com/data/icons/user-pictures/100/unknown-512.png';" class="rounded-circle"
+          alt="avatar image">
+        {%else%}
+        <img src="https://www.iconfinder.com/data/icons/user-pictures/100/unknown-512.png" class="rounded-circle"
+        alt="avatar image">
+        {%endif%}  
+      </a>
+      </div>
+      <div class="col-6 bio">
+        <div  class="mb-3 text-center d-flex flex-row">
+            <h4 ><strong>{{profile.user.username}}</strong></h4>
+            <button type="button" data-toggle="modal" data-target="#updateprofForm" class="btn btn-primary btn-sm ml-2">Edit Profile</button>
+        </div>
+
+        {%if profile.bio%}
+        <p>{{profile.bio}}</p>
+        {%else%}
+        <p>You have no bio</p>
+        {%endif%}
+      </div>
+    </div>
+    
+  
+    <!-- Content -->
+      <div class="container pt-3">
+        <div class="home">
+          <div class="card-title row">
+            <h2 class="prjs-heading">Uploaded projects</h2>
+          </div>
+          {%if projects%}
+          <div class="row">
+            {%for project in projects%}
+            <div class="mx-auto mb-4 col-md-6 col-lg-4 col-sm-12">
+              <div class="card">
+                <a href="{% url 'view_project' project.id %}">
+                <div class="post-image" >
+                  <img src="{{project.cover_photo.cdn_url}}" class="img-fluid" width="100%" style="min-height:160px" />
+                </a>
+                </div>
+                <div class="card-body pl-3 pr-3">
+                  <h3 class="m-2 prj-title">
+                    <a href="{% url 'view_project' project.id %}">{{project.title }}</a> <a style="float: right;" href="{{ project.url }}"><i class="fas fa-share-square"></i></a>
+                  </h3>   
+                  <p class="card-text m-2">
+                  
+                    {%if project.user.profile.profile_photo.cdn_url%}
+                    <img src="{{project.user.profile.profile_photo.cdn_url}}" width="28px" height="28px" alt="avatar image" class="rounded-circle z-depth-0"/>
+                    {%else%}
+                    <img src="https://www.iconfinder.com/data/icons/user-pictures/100/unknown-512.png" class="rounded-circle z-depth-0"
+                    alt="avatar image" width="28px" height="28px" >
+                    {%endif%} 
+                    <span style="font-size:12px">BY <strong>{{project.user.username|upper }}</strong></span>   
+                    <span style="font-size: 0.8rem;float:right" class="pl-2 text-muted">{{project.upload_date|date}}</span>
+                  </p>
+                </div>
+                
+              </div>
+            </div>   
+            {%endfor%}
+          </div>
+          {%else%}
+          <div class="row">
+            <li class="list-group-item mx-auto">
+              <p class="text-muted pl-3">No projects submitted</p>
+              <a href="{%url 'submit_project'%}">
+                <button class="btn btn-info btn-sm" id="site">
+                  Submit your site
+                </button>
+              </a>
+            </li>
+            
+          </div>
+          {%endif%}
+          <div class="modal fade" id="updateprofForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header text-center">
+                  <h4 class="modal-title w-100 font-weight-bold">Update profile </h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body mx-3">
+                  <form  action="" method="post" enctype="multipart/form-data">
+                    {%csrf_token%}
+                
+                    {% bootstrap_form form%}
+
+                </div>
+                    <div class="modal-footer d-flex justify-content-center">
+                      <button type="submit" class="btn btn-default">Update</button>
+                    </div>
+                  </form>
+              </div>
+            </div>
+          </div>
+        </div> 
+      </div>
+      
+
+  
+</div>
+                                     
+  
+{%endblock%}
