@@ -1,0 +1,26 @@
+{%extends 'base.html'%}
+{% load bootstrap3 %} 
+{%block title%}
+{{form.media }}
+{%endblock%}
+{%block content%}
+<div class="card container mx-auto mt-5 mb-5 p-5">
+  <div class="text-center card-header card-header-primary">
+    <h4 class="card-title">Upload a project</h4>
+  </div>
+  <div class="card-body">
+    <form  action="{%url 'submit_project'%}" method="post" enctype="multipart/form-data">
+      {%csrf_token%}
+  
+      {% bootstrap_form form%}
+      <div class="text-center">
+        <input type="submit" class=" btn btn-success btn-lg" value="Post">
+      </div>
+      
+    </form>
+  </div>
+
+</div>
+ 
+
+ {%endblock%}
