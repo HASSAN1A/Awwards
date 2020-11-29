@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{%load bootstrap3%}
+{%load static%}
+{%block styles%}
+{{block.super}}
+<link rel="stylesheet" href="{% static 'css/project.css' %}">
+{%endblock%}
+{% block content %}
+<div class="container project_page mt-3">
+    <h5 class="text-center mb-4">{{project.title}}</h5>
+
+    <div class="card">
+      <div class="post-image" style="background-image:url({{project.cover_photo.cdn_url }})" >
+        <div class="prj-ratings text-center" >
+          <div class="container mask over rgba-black-slight">
+              <div style="height: 50vh;" class="tings d-flex justify-content-center">
+                  <div id="design">{{ratings.design}}<br>
+                      <span class="rates">design</span>
+                  </div>
+                  <div id="usable">{{ratings.usability}}<br>
+                      <span class="rates">usability</span>
+                  </div>
+                  <div id="contente">{{ratings.content}}<br>
+                      <span class="rates">content</span>
+                  </div>
+                  <div id="score">{{ratings.score}}<br>
+                    <span class="rates">score</span>
+                  </div>
+              </div>
+          </div>
+
+        </div>
+      </div>
+               
+          
+        <div class="card-body">
+            <h5 class="card-title"><strong>{{project.title}}</strong>
+                <a href="{{project.url}}" style="float:right" class="btn btn-sm btn-info mr-4"> Visit </a></h5>
+            <p>by <span><a href="" id="username" class="mr-2">{{project.user.username}}</a></span>
+            </p>
+            <p>{{project.description}}</p>
+            <hr>
+            <h6 class="card-title my-3"><strong>Project ratings</strong></h6>
+
+            <ul class="list-group list-group-flush">
+              {%if raters%}
+              {% for rater in raters %}
+              
+                <li class="list-group-item">
+                  {%if rater.user.profile.cover_photo.cdn_url%}
+                    <img src="{{rater.user.profile.cover_photo.cdn_url}}" class="rounded-circle z-depth-0" alt="avatar image" height="35">
+                  {%else%}
+                    <img src="https://www.iconfinder.com/data/icons/user-pictures/100/unknown-512.png" class="rounded-circle z-depth-0" alt="avatar image" height="35">
+                  {%endif%}
+                  <a class="text-dark" href=""><b class="ml-5">{{ rater.user.username }}</b></a>
+                  <small class="float-right">
+                      <a class='btn btn-sm btn-outline-warning waves-effect' href="">{{rater.design}} <br> Design</a>
+                      <a class='btn btn-sm btn-outline-primary waves-effect' href="">{{rater.usability}}<br> Usability</a>
+                      <a class='btn btn-sm btn-outline-success waves-effect' href="">{{rater.content}}<br> Content</a>
+                      <a class='btn btn-sm btn-outline-danger waves-effect' href="">{{rater.score}}<br> Score</a>
+                  </small>
+                </li>
+              {% endfor %}
+              {%else%}
+              <li class="list-group-item">
+                <p class="text-muted pl-3">No ratings</p>
+              </li>
+              {%endif%}
+              </ul>
+            <hr>
+            <h6 class="card-title my-3"><strong>Rate Project</strong></h6>
+            {%ifequal project.user request.user%}
+            <div class="alert alert-danger" role="alert">
+              You cannot rate your own project
+            </div>
+            {%else%}
+            {%if not already_rated%}
+            <form  action="" method="post" enctype="multipart/form-data">
+                {%csrf_token%}
+            
+                {% bootstrap_form form%}
+                <div class="text-center">
+                  <input type="submit" class=" btn btn-success btn-lg" value="Rate">
+                </div>
+                
+              </form>
+            {%else%}
+            <div class="alert alert-success" role="alert">
+              You already rated this project
+            </div>
+            {%endif%} 
+            {%endifequal%}   
+        </div>
+
+    </div>
+</div>
+{% endblock %}
