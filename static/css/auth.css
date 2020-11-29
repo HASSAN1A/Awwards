@@ -1,0 +1,107 @@
+
+/* Reset CSS */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+body{
+  background: #FAFAFA;
+}
+
+.content{
+  font-family: "apercu",sans-serif;;
+  margin: 0 auto;
+  margin-top: 2rem;
+  padding: 10px 20px 25px 20px;
+  width: 50vw;
+}
+
+
+h2{
+  color: black;
+  font-weight: 600;
+  font-size:  70px;
+  letter-spacing: -.02em;
+  line-height: 20px;
+  margin: 20px 10px 32px;
+  font-family: 'Spectral', serif;
+}
+
+h3, h4{
+  font-size: 15px;
+  font-weight: lighter;
+}
+
+a{
+  text-decoration: none;
+}
+
+
+.content form input[type="password"]{
+  width: 100%;
+  left: 2px;
+  outline-width: .05px;
+  outline-color: #d3d3d3;
+
+}
+.content form input[type="text"]{
+  width: 100%;
+  outline-color: #d3d3d3;
+  outline-width: .05px;
+
+}
+
+.content form input[type="text"],
+.content form input[type="password"]{
+  border-radius: 3px;
+  border: thin solid #d3d3d3;
+  font-weight: lighter;
+  margin: 0px 0 7px 5px;
+  padding: 10px 5px 5px 5px;
+  font-size: 13px;
+  position: relative;
+}
+
+
+
+/* BEGINNING OF JQUERY/JS CSS*/
+#error1, #error2{
+	color: red;
+	font-size: 15px;
+	position: relative;
+	width: 85%;
+	padding: 15px 20px 30px 15px;
+	text-align: center;
+	left: 3%;
+}
+.control-label{
+  line-height: 1.5;
+  font-weight: 400;
+  color: #747373;
+  padding-top: calc(.375rem + 1px);
+  padding-bottom: calc(.375rem + 1px);
+}
+@media screen and (max-width: 796px){
+
+  h2{
+    font-size:  30px;
+  }
+  .content{
+    width: 80vw;
+    padding: 7px 15px 20px 15px;
+  }
+}
