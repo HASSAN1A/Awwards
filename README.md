@@ -12,7 +12,7 @@ The WebApp is compatible with devices of all sizes and all OS's, and consistent 
 
 
 
-#### Get Live link here : [USAGE]()
+#### Get Live link here : [USAGE](https://jumaawardsapp.herokuapp.com/)
 
 ## Description
 This web app  allows users to submit their websites or projects and have them reviewed based on design,usability and content.Users has the ability to rate other peoples projects.
