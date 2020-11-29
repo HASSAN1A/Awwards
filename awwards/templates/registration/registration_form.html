@@ -1,0 +1,32 @@
+{%extends "base.html"%} 
+{% load bootstrap3 %}
+{%load static%}
+{% block styles %}
+  <link rel="stylesheet" href="{%static 'css/auth.css'%}">
+  {% endblock %}
+{% block content %}
+
+<div class="card m-auto content">
+  <div class="card-body">
+    <div class="text-center">
+      {% if form.errors %}
+      <p style="color: red;"> Some Information Might be Incorrect </p>
+      {% endif %}
+    </div>
+    <h6 class="card-title"><span>Register to continue</span> <span style="float:right">Are you a member? <a href="{%url 'user_login'%}" class="text-info">Login now</a></span></h5>
+    <form  method="post">
+      {% csrf_token %}
+      {% bootstrap_form form%}
+      <div class="form-group">
+        <button type="submit" class="btn btn-lg btn-info btn-block">CREATE YOUR ACCOUNT</button>
+      </div>
+      <input type="hidden" name="next" value="{{next}}">
+      <h6 style="margin-bottom: 1rem;" class="h5 text-center font-weight-normal text-muted">By singing up, you agree to our <strong>Terms</strong> , <strong>Data Policy</strong> and <strong>Cookie Policy</strong> </h6>
+    </form>
+  </div>
+</div>
+ 
+
+
+
+{% endblock %}
