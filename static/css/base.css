@@ -1,0 +1,128 @@
+body{
+  background-color: #f4f7f6;
+}
+.home .post-image{
+  height: 25vh;
+  overflow: hidden;
+  position: relative;
+}
+.home .post-image:hover .vote{
+  opacity: 1;
+}
+.vote{
+  position: absolute; /* Sit on top of the page content */
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding-top:10vh ;
+  background-color: rgba(0,0,0,0.2); /* Black background with opacity */
+  z-index: 1;
+  opacity:0 ;
+  cursor: pointer; 
+}
+.home .prj-title{
+  font-size: 14px;
+  color: #202121;
+  font-weight: 500;
+  line-height: 25px;
+}
+.home a{
+  color: #202121;
+}
+.card-title h2{
+  font-size: 18px;
+  font-weight: bold;
+  color: #202121;
+}
+.site-of-the-day{
+  height:40vh;
+  position: relative;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image:url(https://mdbootstrap.com/img/Photos/Others/images/43.jpg)
+}
+#site-overlay{
+    position: absolute; /* Sit on top of the page content */
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.2); /* Black background with opacity */
+    z-index: 1; 
+    cursor: pointer; 
+
+}
+.site-of-the-day h5{
+  font-size: 14px;
+}
+
+.site{
+  color:white;
+  position:absolute;
+  margin: auto;
+  position: absolute;
+  top: 20%; 
+  left: 0; 
+  bottom: 0; 
+  right: 0;
+}
+.site a{
+  color: white;
+}
+.site #username{
+  color: #00bdaa;
+} 
+.site #design{
+  color:white;
+  border: 3px solid orange;
+  border-radius: 50%;
+  height:90px;
+  width:90px;
+  margin-right: 5%;
+}
+.site #usable{
+  color:white;
+  border: 3px solid blue;
+  border-radius: 50%;
+  height:90px;
+  width:90px;
+  margin-right: 5%;
+}
+
+.site #contente{
+  color:white;
+  border: 3px solid green;
+  border-radius: 50%;
+  height:90px;
+  width:90px;
+  margin-right: 5%;
+}
+.site #score{
+  color:white;
+  border: 3px solid red;
+  border-radius: 50%;
+  height:90px;
+  width:90px;
+  margin-right: 5%;
+}
+
+
+.site .rates{
+  font-size:14px;
+  font-weight:bolder;
+} 
+.site h1{
+  font-weight: 800;
+}
+.site .by{
+  font-size: 15px;
+  font-weight: 300;
+  text-transform: uppercase;
+  color: #fcfcfc;
+}
