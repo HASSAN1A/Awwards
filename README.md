@@ -1,7 +1,7 @@
 
 #### Awwards
 
-#### Site
+#### A Django CRUD web app that rates projects.
 #### Landing Page
 Currently deployed at heroku and working.
 
@@ -14,23 +14,25 @@ The WebApp is compatible with devices of all sizes and all OS's, and consistent 
 
 #### Get Live link here : [USAGE]()
 
-## Description.
-Django CRUD Web application that allows users to signup and login to the web application, they can also follow each other like each other's photos, comment, and update their profiles. It also saves users' posts via various posts and can always be viewed from time to time.
+## Description
+This web app  allows users to submit their websites or projects and have them reviewed based on design,usability and content.Users has the ability to rate other peoples projects.
 
 
 
 
 ## Running the process
-* . virtual/bin/activate
+* . myvirtual/bin/activate
 * To open local server run python3 manage.py runserver
 * To run the test,run python manage.py test Awwards
 
 ## User Story
-* A user can view photos that interest me.
-* Click on a single photo to expand it and also view the details of the photo.
-* Search for different categories of photos. (ie. Nature, Food).
-* Copy a link to the photo to share with my friends.
-* View photos based on the location they were taken.
+         As a user, you can:
+1. View posted projects and their details
+2. Post a project to be rated/reviewed
+3. Rate/ review other users' projects
+4. Search for projects 
+5. View projects overall score
+6. View your profile page
 
 ## Development Installation
 To get the code..
@@ -59,11 +61,16 @@ To get the code..
 Open the application on your browser `127.0.0.1:8000`.
 
 
-## Behaviour Driven Development (BDD)
+## Behavior Driven Development
 
-| Behaviour                                                                                        |                                                                      Input                                                                       |                                                                                                 Output |
-| ------------------------------------------------------------------------------------------------ | :----------------------------------------------------------------------------------------------------------------------------------------------: | -----------------------------------------------------------------------------------------------------: |
-| Page loads, user arrives in the landing page, a list of all available users category is displayed. | The user can click on any particular user or friend suggestions to be directed to a separate page containing user highlights and follow button by the same user. | On clicking the "button" , the user is redirected to friendlist to allow you follow  more users. |  |
+| Input                    | Behaviour                       | Output                                       |
+| -------------------------| ------------------------------  | -------------------------------------------- |
+|User visits and clicks submit button            | User wants to submit a site             | Site is uploaded and displays the site on the site homepage     |
+| Then click on the website image           | User wants to view the website descriptions | Website descriptions are displayed         |
+| User hovers on website image and click rate button                  | User wants to rate a project  |  User is redirect to site and rate form shown |
+| User clicks profile button | User wants to view their profile  | User is redirected to my profile page |
+| User clicks edit profile button  | User wants to update their profile   |  Update profile modal pop up to edit profile details |
+| User navigate to api endpoints provided below | User wants to use awwards api | List reesources according to endpoint accessed |
 
 ## Features
 
@@ -88,6 +95,51 @@ To fix a bug or enhance an existing module, follow these steps:
 - Commit your changes (`git commit -am 'Improve feature'`)
 - Push to the branch (`git push origin improve-feature`)
 - Create a Pull Request
+
+
+
+
+## API-Endpoints
+* https://jumaawardsapp.herokuapp.com//api/profiles  -  List profiles registered with awwards
+* https://jumaawardsapp.herokuapp.com//api/projects  -  Returns information pertaining to all the projects posted in awwards
+
+## Requirements
+* This program requires python3.+ (and pip) installed, a guide on how to install python on various platforms can be found [here](https://www.python.org/)
+
+
+## Installation and Set-up
+Here is a run through of how to set up the application:
+* **Step 1** : Clone this repository using **`https://github.com/HASSAN1A/Awwards.git`**, or downloading a ZIP file of the code.
+* **Step 2** : The repository, if downloaded as a .zip file will need to be extracted to your preferred location and opened
+* **Step 3** : Go to the project root directory and  create a virtual environment. Run the following commands respectively:
+    * **`python3.8 -m venv --without-pip virtual`**
+    * **`source virtual/bin/activate`**
+        * Note that you can exit the virtual environment by running the command **`deactivate`**
+* **Step 4** :  Download the latest version of pip in virtual our environment.   
+    * **`curl https://bootstrap.pypa.io/get-pip.py | python`**  
+
+* **Step 5** : Download the all dependencies in the requirements.txt using **`pip install -r requirements.txt`**
+* **Step 6** : Create the Database
+    * - psql
+    * - CREATE DATABASE awwards;
+* **Step 7** : .env file
+    * Create .env file and paste paste the following filling where appropriate:
+
+    * - SECRET_KEY = '<Secret_key>'
+    * - DBNAME = '<DB_NAME>'
+    * - USER = '<USER_>'
+    * - PASSWORD = '<Password>'
+    * - DEBUG = True
+* **Step 8** : Run initial Migration
+    * python3 manage.py makemigrations
+    * python3 manage.py migrate
+* **Step 10** : Create admin credentials
+    * python3 manage.py createsuperuser
+  
+* **Step 11** : Run application
+    * python3 manage.py runserver
+    * Open your preferred browser and view the app by opening the link **http://127.0.0.1:8000/**.
+
 
 ### Bug / Feature Request
 
