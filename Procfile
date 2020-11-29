@@ -1,0 +1,1 @@
+web: gunicorn awwardit.wsgi --log-file -
