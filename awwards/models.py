@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from pyuploadcare.dj.models import ImageField
+from cloudinary.models import CloudinaryField
 import datetime as dt
 from django.db.models.signals import post_save
 from django.dispatch import receiver
@@ -8,7 +8,8 @@ import statistics
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    profile_photo = ImageField(blank=True, manual_crop="")
+    profile_photo = CloudinaryField('profile_photo',null=True,blank=True)
+    # profile_photo = ImageField(blank=True, manual_crop="")
     bio = models.TextField(max_length=500, blank=True)
     location = models.CharField(max_length=60, blank=True)
     contact = models.CharField(max_length=60,blank=True)
@@ -33,7 +34,8 @@ class Project(models.Model):
     url = models.URLField(max_length=255)
     description = models.TextField(max_length=255)
     technologies = models.CharField(max_length=200, blank=True)
-    cover_photo = ImageField(blank=True, manual_crop="")
+    cover_photo = CloudinaryField('profile_photo',null=True,blank=True)
+    # cover_photo = ImageField(blank=True, manual_crop="")
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     upload_date = models.DateTimeField(auto_now_add=True)
 

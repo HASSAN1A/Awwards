@@ -14,6 +14,9 @@ from pathlib import Path
 import os
 import django_heroku
 import dj_database_url
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 from decouple import config,Csv
 
 MODE=config("MODE", default="dev")
@@ -69,7 +72,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'awwards.apps.AwwardsAppConfig',
     'bootstrap3',
-    'pyuploadcare.dj',
+    'cloudinary',
     'rest_framework',
 ]
 
@@ -105,10 +108,11 @@ TEMPLATES = [
 ]
 
 
-UPLOADCARE = {
-    'pub_key': config("PUB_KEY"),
-    'secret': config("SECRET"),
-}
+cloudinary.config( 
+  cloud_name = "dy8uvacco", 
+  api_key = "559452647943885", 
+  api_secret = "WugdaysfbdNZ0AxMtCw2verMyTQ" 
+)
 WSGI_APPLICATION = 'awwardit.wsgi.application'
 
 

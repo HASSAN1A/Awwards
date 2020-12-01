@@ -1,5 +1,7 @@
 {%load static%}
+{% load cloudinary %}
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -13,7 +15,7 @@
   {% endif %}
   {%block title%}
   {%endblock%}
- 
+
   <link rel="icon" href="https://assets.awwwards.com/assets/images/favicon.svg" type="image/svg+xml" />
 
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
@@ -48,7 +50,7 @@
           {{ message }}
         </div>
         {% endfor %}
-    {% endif %} 
+    {% endif %}
   {% block content %}{% endblock content %}
   </div>
 
@@ -63,8 +65,8 @@
   <!-- Specific Page JS goes HERE  -->
 
   {% block scripts %}
- 
+
   {% endblock scripts %}
-  
+
 </body>
 </html>

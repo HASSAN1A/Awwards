@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from .models import Project,Rating,Profile
-from pyuploadcare.dj.forms import ImageField
+from cloudinary.models import CloudinaryField
 
 class SignUpForm(UserCreationForm):
 
@@ -22,7 +22,8 @@ class SignUpForm(UserCreationForm):
 
 
 class ProjectForm(forms.ModelForm):
-    cover_photo = ImageField(label='')
+    cover_photo = CloudinaryField('profile_photo',null=True,blank=True)
+    # cover_photo = ImageField(label='')
     url = forms.URLField(label='Live site')
     widgets = {
           "title":forms.TextInput(attrs={"class":"form-control mb-4"}),
