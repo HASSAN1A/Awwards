@@ -22,7 +22,7 @@ class SignUpForm(UserCreationForm):
 
 
 class ProjectForm(forms.ModelForm):
-    cover_photo = CloudinaryField('profile_photo',null=True,blank=True)
+    cover_photo = CloudinaryField('cover_photo',null=True,blank=True)
     # cover_photo = ImageField(label='')
     url = forms.URLField(label='Live site')
     widgets = {
@@ -41,7 +41,7 @@ class ProjectForm(forms.ModelForm):
 class RatingsForm(forms.ModelForm):
     class Meta:
         model = Rating
-        fields = ['design', 'usability', 'content']        
+        fields = ['design', 'usability', 'content']
 
 
 class UserProfileForm(forms.ModelForm):
