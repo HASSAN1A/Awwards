@@ -10,4 +10,4 @@ urlpatterns = [
     path('view/my-profile',views.my_profile,name='my_profile'),
     path('api/profiles', views.ProfileList.as_view()),
     path('api/projects', views.ProjectsList.as_view()),
-]	
+]

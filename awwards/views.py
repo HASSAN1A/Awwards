@@ -19,7 +19,7 @@ def home_page(request):
     prjs= [p.project for p in ratings]
     site_of_day=random.choice(prjs)
     site_of_day_ratings=get_project_ratings_av(site_of_day.id)
-    
+
 
 
     context={
@@ -43,13 +43,13 @@ def register_user(request):
         messages.success(request, f'Account for username {username} successfully created.')
         return redirect('home_page')
   else:
-      form = SignUpForm() 
-  return render(request, 'registration/registration_form.html', {'form': form})   
+      form = SignUpForm()
+  return render(request, 'registration/registration_form.html', {'form': form})
 
 
 
 def user_login(request):
-    
+
     if request.method == "POST":
         username = request.POST.get("username")
         password = request.POST.get("password")
@@ -63,17 +63,17 @@ def user_login(request):
 
                 return HttpResponseRedirect(reverse("home_page"))
             else:
-                return HttpResponseRedirect(reverse("user_login")) 
+                return HttpResponseRedirect(reverse("user_login"))
 
         else:
-            return HttpResponseRedirect(reverse("user_login")) 
+            return HttpResponseRedirect(reverse("user_login"))
     else:
-        return render(request, "registration/login_form.html", context={})  
+        return render(request, "registration/login_form.html", context={})
 
 
 def user_logout(request):
     logout(request)
-    return HttpResponseRedirect(reverse("user_login"))  
+    return HttpResponseRedirect(reverse("user_login"))
 
 
 
@@ -86,9 +86,9 @@ def submit_project(request):
             project.user = request.user
             project.save()
             messages.success(request, f'Project successfully uploaded')
-            form = ProjectForm() 
+            form = ProjectForm()
     else:
-        form = ProjectForm()  
+        form = ProjectForm()
 
 
     context={
@@ -112,7 +112,7 @@ def get_project_ratings_av(prj_id):
         content_avg = round(sum(content_ratings) / len(content_ratings),2)
 
         score_avg = round((design_avg+usability_avg+content_avg)/3,2)
-        
+
         av_ratings={
             'design':design_avg,
             'usability':usability_avg,
@@ -129,7 +129,7 @@ def get_project_ratings_av(prj_id):
         }
         return av_ratings
 
-   
+
 
 
 @login_required(login_url='/accounts/login/')
@@ -165,14 +165,14 @@ def view_project(request,prj_id):
         'already_rated':already_rated
     }
 
-    return render(request,'project.html',context)  
+    return render(request,'project.html',context)
 
 
 @login_required(login_url='/accounts/login/')
 def my_profile(request):
 
     profile=request.user.profile
-    
+
     my_projects=Project.filter_by_userid(request.user.id)
 
     if request.method == 'POST':
@@ -189,8 +189,8 @@ def my_profile(request):
         'projects':my_projects,
         'form':form
     }
-    return render(request, 'my_profile.html',context)    
-      
+    return render(request, 'my_profile.html',context)
+
 @login_required(login_url='/accounts/login/')
 def search_projects(request):
 
@@ -198,7 +198,7 @@ def search_projects(request):
         search_term = request.GET.get("search_project")
         projects =Project.search_project(search_term)
         message = f"{search_term}"
-        
+
         context={
           "message":message,
           'projects':projects
@@ -219,13 +219,13 @@ class ProfileList(APIView):
         all_profiles = Profile.objects.all()
         serializers = ProfileSerializer(all_profiles,many=True)
         return Response(serializers.data)
-    
-    
-    
-    
+
+
+
+
 class ProjectsList(APIView):
     def get(self,request,format=None):
         all_projects = Project.objects.all()
         serializers = ProjectsSerializer(all_projects,many=True)
         return Response(serializers.data)
-    
+

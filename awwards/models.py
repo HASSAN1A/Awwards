@@ -76,7 +76,7 @@ class Project(models.Model):
       Deletes project based on its id
       '''
       cls.objects.filter(id=id).delete()
-      
+
 
     @classmethod
     def search_project(cls,prj_title):
@@ -96,7 +96,7 @@ class Project(models.Model):
       projects=cls.objects.filter(user_id=user_id)
       return projects
 
-  
+
 class Rating(models.Model):
     rating = (
         (1, '1'),
