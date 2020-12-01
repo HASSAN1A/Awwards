@@ -22,7 +22,7 @@ class SignUpForm(UserCreationForm):
 
 
 class ProjectForm(forms.ModelForm):
-    cover_photo = CloudinaryField('cover_photo',null=True,blank=True)
+    cover_photo = CloudinaryField('cover_photo',blank=True)
     # cover_photo = ImageField(label='')
     url = forms.URLField(label='Live site')
     widgets = {

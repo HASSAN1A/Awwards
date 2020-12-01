@@ -8,7 +8,7 @@ import statistics
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    profile_photo = CloudinaryField('profile_photo',null=True,blank=True)
+    profile_photo = CloudinaryField('profile_photo',blank=True)
     # profile_photo = ImageField(blank=True, manual_crop="")
     bio = models.TextField(max_length=500, blank=True)
     location = models.CharField(max_length=60, blank=True)
