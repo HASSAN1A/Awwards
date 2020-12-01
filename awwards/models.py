@@ -34,7 +34,7 @@ class Project(models.Model):
     url = models.URLField(max_length=255)
     description = models.TextField(max_length=255)
     technologies = models.CharField(max_length=200, blank=True)
-    cover_photo = CloudinaryField('cover_photo',null=True,blank=True)
+    cover_photo = CloudinaryField('cover_photo',blank=True)
     # cover_photo = ImageField(blank=True, manual_crop="")
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     upload_date = models.DateTimeField(auto_now_add=True)
